@@ -10,8 +10,10 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.4",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
+        "phpgt/dom": "^2.1",
         "sunra/php-simple-html-dom-parser": "1.5.2"
     },
     "require-dev": {
