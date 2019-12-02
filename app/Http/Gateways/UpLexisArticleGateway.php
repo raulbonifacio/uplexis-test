@@ -10,6 +10,6 @@ class UpLexisArticleGateway implements ArticleGateway {
 
         $articles  = [];
         
-        //Returns an array of articles
+        return $articles;
     }
 }

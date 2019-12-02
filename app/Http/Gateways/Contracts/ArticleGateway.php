@@ -6,7 +6,7 @@ namespace App\Http\Gateways\Contracts;
  * A gateway to an external source of articles
  */
 
- interface ArticleGateway {
+interface ArticleGateway {
 
     /**
      * Fetches a list of external articles
