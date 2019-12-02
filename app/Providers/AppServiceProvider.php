@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
             'App\Http\Gateways\Contracts\ArticleGateway',
             'App\Http\Gateways\UpLexisArticleGateway');
 
-        $this->app->singleton('\GuzzlleHttp\Guzzle', function() { 
+        $this->app->singleton('\GuzzlleHttp\Client', function() { 
             return new  \GuzzleHttp\Client();
         });
     }
