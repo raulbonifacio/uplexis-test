@@ -19,4 +19,6 @@ Route::get('/', function () {
 }); 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/articles', 'ArticleController@index')->name('articles');
+Route::post('/articles', 'ArticleController@fetch')->name('fetch-articles');
+Route::delete('/articles/{id}', 'ArticleController@remove')->name('remove-article');
