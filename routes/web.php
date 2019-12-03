@@ -13,12 +13,14 @@
 
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-}); 
-Auth::routes();
+});
 
-Route::get('/articles', 'ArticleController@index')->name('articles');
-Route::post('/articles', 'ArticleController@fetch')->name('fetch-articles');
-Route::delete('/articles/{id}', 'ArticleController@remove')->name('remove-article');
+Route::group(['middleware' => 'auth'], function() {    
+    Route::get('/articles', 'ArticleController@index')->name('articles');
+    Route::post('/articles', 'ArticleController@fetch')->name('fetch-articles');
+    Route::delete('/articles/{id}', 'ArticleController@remove')->name('remove-article');
+});
