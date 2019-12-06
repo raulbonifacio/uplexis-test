@@ -32,7 +32,7 @@ class UpLexisArticleGateway implements ArticleGateway {
             //Suppress the errors from libxml
             libxml_use_internal_errors(true);
 
-            //Converte the html
+            //Convert the html to an acceptable format
             $html = $response->getBody()->getContents();
             $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
             $html = preg_replace('/\s\s+/', ' ', $html);
