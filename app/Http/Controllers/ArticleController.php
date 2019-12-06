@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
 use \App\Models\Article;
 use \App\Http\Gateways\Contracts\ArticleGateway;
 use \App\Http\Gateways\Contracts\ArticleGatewayException;
 
 use Illuminate\Http\Request;
-
 
 class ArticleController extends Controller
 {
@@ -39,7 +37,6 @@ class ArticleController extends Controller
 
         //Saves the articles
         collect($capturedArticles)->each(function($article) use ( &$duplicates ) {
-
             //Prevent duplicates in the database
             if(!Article::where('title', $article->title)->count()){
                 auth()->user()->articles()->save($article);
