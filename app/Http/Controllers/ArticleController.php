@@ -19,7 +19,6 @@ class ArticleController extends Controller
     }
 
     public function index(Request $request) {
-
         //Return the information for the view
         return view('pages.articles.index', [
             'articles' => auth()->user()->articles()->orderBy('created_at', 'desc')->get(),
@@ -27,13 +26,10 @@ class ArticleController extends Controller
     }
 
     public function fetch(Request $request) {
-
         $capturedArticles = [];
         $duplicates = 0 ;
 
-        $request->validate([
-            'search' => 'required'
-        ]);
+        $request->validate(['search' => 'required']);
  
         try { 
             $capturedArticles = $this->articleGateway->fetchArticles($request->search);
@@ -45,8 +41,7 @@ class ArticleController extends Controller
         collect($capturedArticles)->each(function($article) use ( &$duplicates ) {
 
             //Prevent duplicates in the database
-            if(!Article::where('title', $article->title)->count())
-            {
+            if(!Article::where('title', $article->title)->count()){
                 auth()->user()->articles()->save($article);
             } else {
                 $duplicates++;
