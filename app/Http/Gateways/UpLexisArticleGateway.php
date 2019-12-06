@@ -10,7 +10,6 @@ use \App\Models\Article;
 class UpLexisArticleGateway implements ArticleGateway { 
     
     const URL = 'https://www.uplexis.com.br/blog';
-    const TARGETED_DOM_ELEMENT = '';
     
     protected $client;
 
@@ -19,15 +18,12 @@ class UpLexisArticleGateway implements ArticleGateway {
     }
 
     public function fetchArticles($searchParams) {
-        
         //To store the articles
         $articles = [];
 
         //Get the response from the upLexis website blog
         $response = $this->client->get(self::URL, [
-            'query' => [
-                's' => $searchParams
-            ]
+            'query' => ['s' => $searchParams]
         ]);
 
         //If the request was sucessful
@@ -58,7 +54,7 @@ class UpLexisArticleGateway implements ArticleGateway {
                     $link = $div->getElementsByTagName('a')->item(0)->getAttribute('href');
 
                     //Create the article
-                    $article = new Article(); 
+                    $article = new Article();
                     $article->title = $title;
                     $article->link = $link;
                     
