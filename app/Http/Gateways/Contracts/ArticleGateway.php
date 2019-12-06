@@ -2,9 +2,6 @@
 
 namespace App\Http\Gateways\Contracts;
 
-
-
-
 /**
  * A gateway to an external source of articles
  */
